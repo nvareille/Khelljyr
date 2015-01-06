@@ -1,4 +1,5 @@
 #include "GarbageCollector.h"
+#include "../Debug/Debug.h"
 
 static void	basic_ptr_cleaner(void *data)
 {
@@ -40,7 +41,7 @@ void		clean(void *ptr)
     return ;
   while (r)
     {
-      if ((char *)r->data == (char *)ptr)
+      if (r->data == ptr)
 	{
 	  *prev = r->next;
 	  clean_ressource(r);
@@ -50,6 +51,7 @@ void		clean(void *ptr)
       prev = &r->next;
       r = r->next;
     }
+  DUMP("Khelljyr: Bad Pointer Cleaning (%p)", ptr);
 }
 
 void		clean_collector(GarbageCollector *collector)
