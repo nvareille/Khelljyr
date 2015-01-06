@@ -21,6 +21,7 @@ typedef struct		s_GarbageCollector
 void			app_init(void *, void (*)(void *));
 void			*alloc(size_t);
 void			*custom_alloc(size_t, void (*)(void *));
+void			*ressource_handle(void *, void (*)(void *));
 void			clean(void *);
 void			clean_collector(GarbageCollector *);
 
