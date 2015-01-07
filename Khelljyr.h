@@ -6,6 +6,7 @@
 # include "MemoryManager/MemoryManager.h"
 # include "Graphic/Graphic.h"
 # include "Utils/Utils.h"
+# include "Debug/Debug.h"
 
 typedef struct		s_khelljyr_app
 {
