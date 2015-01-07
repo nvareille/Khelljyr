@@ -8,7 +8,7 @@ What's implemented ?
 - SimpleScene
 
   Calling the function create_basic_scene() will create a new window ready to be used and without taking care of it !
-  just set the two handlers and everything is fine ! (window_stack_pop() will free it and free what's has been allocated on it)
+  just set the two handlers and the update function and everything is fine ! (window_stack_pop() will free it and free what's has been allocated on it)
 
 - MemoryManager:
   
