@@ -3,6 +3,9 @@
 static void	app_builder(Khelljyr *data)
 {
   scopper(&data->collector, 0);
+  scopper(&data->graphic, 1);
+  scopper(&data->graphic.stack, 2);
+  create_ressource_layer();
 }
 
 void		app_init(void *data, void (*fct)(void *))

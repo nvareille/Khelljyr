@@ -1,26 +1,27 @@
 #include "BasicWindow.h"
 
-static void	free_window(void *ptr)
+static void		destroy_window(Window *window)
+{
+  graphic_stack_pop();
+}
+
+static void		free_window(void *ptr)
 {
   window_destroy(ptr);
 }
 
-static void	free_layer(void *ptr)
+Window			*create_window(void (*fct)(Layer *, GContext *), void (*load)(Window *), void (*unload)(Window *))
 {
-  layer_destroy(ptr);
-}
+  Window		*window;
+  Layer			*layer[2];
+  WindowHandlers	handlers;
 
-Window		*create_window(void (*fct)(Layer *, GContext *))
-{
-  Window	*window;
-  Layer		*layer[2];
-  GRect		rect;
-  
+  create_ressource_layer();
   window = ressource_handle(window_create(), free_window);
-  layer[0] = window_get_root_layer(window);
-  rect = layer_get_frame(layer[0]);
-  layer[1] = ressource_handle(layer_create(rect), free_layer);
-  layer_set_update_proc(layer[0], fct);
-  layer_add_child(layer[0], layer[1]);
+  handlers.load = load;
+  handlers.unload = unload ? unload : destroy_window;
+  handlers.disappear = NULL;
+  handlers.appear = NULL;
+  window_set_window_handlers(window, handlers);
   return (window);
 }

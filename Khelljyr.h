@@ -3,13 +3,16 @@
 
 # include <pebble.h>
 
-# include "GarbageCollector/GarbageCollector.h"
+# include "MemoryManager/MemoryManager.h"
 # include "Graphic/Graphic.h"
+# include "Utils/Utils.h"
 
 typedef struct		s_khelljyr_app
 {
-  GarbageCollector	collector;
+  MemoryManager		collector;
   Graphic		graphic;
 }			Khelljyr;
+
+void		app_init(void *data, void (*fct)(void *));
 
 #endif
