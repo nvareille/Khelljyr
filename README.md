@@ -15,7 +15,7 @@ What's implemented ?
   When you allocate memory with Khelljyr (alloc(), custom_alloc()) or you have memory that must be handled (ressource_handle()),
   everything will be cleared when the window is destroyed. Forget about memory leaks with this feature !
 
-- Img
+- Img:
 
   A nice abstractions to GBitmap pictures. Very easy to use and handled by the MemoryManager, once loaded it's ready for use !
 
