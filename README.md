@@ -15,8 +15,13 @@ What's implemented ?
   When you allocate memory with Khelljyr (alloc(), custom_alloc()) or you have memory that must be handled (ressource_handle()),
   everything will be cleared when the window is destroyed. Forget about memory leaks with this feature !
 
+- Img
+
+  A nice abstractions to GBitmap pictures. Very easy to use and handled by the MemoryManager, once loaded it's ready for use !
+
 - Useful Macros
 
+  USER_PTR will be a pointer to your user data that you pass to app_init.
   MEMORYMANAGER_PTR and GRAPHIC_PTR will return pointers to structures of the framework (without calling the fuctions and accessible everywhere in the code !)
 
 - Debug:

@@ -1,10 +1,11 @@
 #include "Khelljyr.h"
 
-static void	app_builder(Khelljyr *data)
+static void	app_builder(Khelljyr *data, void *user)
 {
   scopper(&data->collector, 0);
   scopper(&data->graphic, 1);
   scopper(&data->graphic.stack, 2);
+  scopper(user, 3);
   create_ressource_layer();
 }
 
@@ -14,7 +15,7 @@ void		app_init(void *data, void (*fct)(void *))
 
   app = malloc(sizeof(Khelljyr));
   memset(app, 0, sizeof(Khelljyr));
-  app_builder(app);
+  app_builder(app, data);
   if (fct)
     fct(data);
   app_event_loop();

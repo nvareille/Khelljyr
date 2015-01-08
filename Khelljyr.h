@@ -5,8 +5,11 @@
 
 # include "MemoryManager/MemoryManager.h"
 # include "Graphic/Graphic.h"
+# include "Img/Img.h"
 # include "Utils/Utils.h"
 # include "Debug/Debug.h"
+
+# define USER_PTR ((void *)scopper(NULL, 3))
 
 typedef struct		s_khelljyr_app
 {

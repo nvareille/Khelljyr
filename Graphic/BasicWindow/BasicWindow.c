@@ -13,7 +13,6 @@ static void		free_window(void *ptr)
 Window			*create_window(void (*fct)(Layer *, GContext *), void (*load)(Window *), void (*unload)(Window *))
 {
   Window		*window;
-  Layer			*layer[2];
   WindowHandlers	handlers;
 
   create_ressource_layer();
