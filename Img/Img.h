@@ -10,6 +10,7 @@ typedef struct	s_Img
 }		Img;
 
 Img		*create_img(uint32_t);
+Img		*create_img_pos(uint32_t, short, short);
 void		draw_image(Img *, GContext *);
 void		draw_image_pos(Img *, int, int, GContext *);
 void		set_img_pos(Img *, int x, int y);

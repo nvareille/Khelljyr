@@ -10,6 +10,8 @@ What's implemented ?
   Calling the function create_basic_scene() will create a new window ready to be used and without taking care of it !
   just set the two handlers and the update function and everything is fine ! (window_stack_pop() will free it and free what's has been allocated on it)
 
+  Calling the function create_basic_scene_fullscreen() will create it in fullscreen
+
 - MemoryManager:
   
   When you allocate memory with Khelljyr (alloc(), custom_alloc()) or you have memory that must be handled (ressource_handle()),
@@ -31,3 +33,4 @@ What's implemented ?
 - Utils functions
 
   putstr() will write some text in a graphic context very easily
+  putstr_font() will write some text with custom font

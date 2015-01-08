@@ -15,3 +15,12 @@ void		graphic_stack_pop()
     GRAPHIC_PTR->stack = s->next;
   clean_ressource_layer();
 }
+
+void		refresh()
+{
+  GraphicStack	*s;
+
+  s = GRAPHIC_PTR->stack;
+  if (s)
+    layer_mark_dirty(GRAPHIC_PTR->stack->layer[LAYER]);
+}

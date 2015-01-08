@@ -6,16 +6,21 @@ static void		clean_image(void *data)
   free(data);
 }
 
-Img			*create_img(uint32_t r)
+Img			*create_img_pos(uint32_t r, short x, short y)
 {
   Img			*img;
 
   img = custom_alloc(sizeof(Img), clean_image);
   img->image = gbitmap_create_with_resource(r);
   img->blit.size = img->image->bounds.size;  
-  img->blit.origin.x = 0;
-  img->blit.origin.y = 0;
+  img->blit.origin.x = x;
+  img->blit.origin.y = y;
   return (img);
+}
+
+Img			*create_img(uint32_t r)
+{
+  return (create_img_pos(r, 0, 0));
 }
 
 void			draw_image(Img *img, GContext *ctx)

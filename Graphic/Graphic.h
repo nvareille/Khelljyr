@@ -23,5 +23,6 @@ typedef struct		s_Graphic
 
 void			graphic_stack_push(GraphicStack *);
 void			graphic_stack_pop();
+void			refresh();
 
 #endif
