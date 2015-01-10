@@ -6,7 +6,7 @@
 # include "../BasicWindow/BasicWindow.h"
 # include "../Graphic.h"
 
-void	create_basic_scene(void (*)(Layer *, GContext *), void (*)(Window *), void (*)(Window *));
-void	create_basic_scene_fullscreen(void (*)(Layer *, GContext *), void (*)(Window *), void (*)(Window *));
+void	create_basic_scene(void (*)(Layer *, GContext *), void (*)(Window *), void (*)(Window *), void (*)());
+void	create_basic_scene_fullscreen(void (*)(Layer *, GContext *), void (*)(Window *), void (*)(Window *), void (*)());
 
 #endif
