@@ -1,5 +1,4 @@
 #include "Scopper.h"
-#include <pebble.h>
 
 void		*scopper(void *data, unsigned char ask)
 {
