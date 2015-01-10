@@ -12,6 +12,8 @@ What's implemented ?
 
   Calling the function create_basic_scene_fullscreen() will create it in fullscreen
 
+  It is possible too to set a click provider directly
+
 - MemoryManager:
   
   When you allocate memory with Khelljyr (alloc(), custom_alloc()) or you have memory that must be handled (ressource_handle()),
