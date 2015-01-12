@@ -1,4 +1,4 @@
-Khelljyr 0.2
+Khelljyr 0.3
 ========
 
 A powerful pebble framework that abstracts layers, windows and implement several features like garbage collector.
