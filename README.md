@@ -1,4 +1,5 @@
 Khelljyr 0.3
+![alt tag](https://github.com/nvareille/Khelljyr/blob/master/Logo.png)
 ========
 
 A powerful pebble framework that abstracts layers, windows and implement several features like garbage collector.
