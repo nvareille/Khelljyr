@@ -1,4 +1,4 @@
-Khelljyr 0.3
+Khelljyr 0.4
 ![alt tag](https://github.com/nvareille/Khelljyr/blob/master/Logo.png)
 ========
 
@@ -6,7 +6,7 @@ A powerful pebble framework that abstracts layers, windows and implement several
 
 What's implemented ?
 
-- SimpleScene
+- BasicScene
 
   Calling the function create_basic_scene() will create a new window ready to be used and without taking care of it !
   just set the two handlers and the update function and everything is fine ! (window_stack_pop() will free it and free what's has been allocated on it)
@@ -14,6 +14,10 @@ What's implemented ?
   Calling the function create_basic_scene_fullscreen() will create it in fullscreen
 
   It is possible too to set a click provider directly
+
+- BasicMenuScene
+
+  Possibility to create a pebble menu in just one line of code !
 
 - MemoryManager:
   
