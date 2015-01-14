@@ -3,7 +3,7 @@
 
 # include "BasicWindow/BasicWindow.h"
 # include "BasicScene/BasicScene.h"
-//# include "BasicMenuScene/BasicMenuScene.h"
+# include "BasicMenuScene/BasicMenuScene.h"
 
 # define WINDOW_LAYER 0
 # define LAYER 1
@@ -11,7 +11,7 @@
 typedef struct		s_GraphicStack
 {
   Window		*window;
-  Layer			*layer[2];
+  void			*layer[2];
   struct s_GraphicStack	*next;
 }			GraphicStack;
 

@@ -18,7 +18,7 @@ static void	fct_basic_scene(void (*fct)(Layer *, GContext *), void (*load)(Windo
   stack->window = window;
   stack->layer[WINDOW_LAYER] = window_get_root_layer(window);
   rect = layer_get_frame(stack->layer[WINDOW_LAYER]);
-  stack->layer[LAYER] = ressource_handle(layer_create(rect), free_layer);
+  stack->layer[LAYER] = resource_handle(layer_create(rect), free_layer);
   layer_set_update_proc(stack->layer[LAYER], fct);
   layer_add_child(stack->layer[WINDOW_LAYER], stack->layer[LAYER]);
   window_set_click_config_provider(window, click);

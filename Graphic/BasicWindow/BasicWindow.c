@@ -15,8 +15,8 @@ Window			*create_window(void (*fct)(Layer *, GContext *), void (*load)(Window *)
   Window		*window;
   WindowHandlers	handlers;
 
-  create_ressource_layer();
-  window = ressource_handle(window_create(), free_window);
+  create_resource_layer();
+  window = resource_handle(window_create(), free_window);
   handlers.load = load;
   handlers.unload = unload ? unload : destroy_window;
   handlers.disappear = NULL;

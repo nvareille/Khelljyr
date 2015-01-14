@@ -5,37 +5,37 @@ static void		basic_ptr_cleaner(void *data)
   free(data);
 }
 
-static void		clean_ressource(Ressource *data)
+static void		clean_resource(Resource *data)
 {
   data->ptr(data->data);
   free(data);
 }
 
-static void		create_ressource(void *data, void (*ptr)(void *))
+static void		create_resource(void *data, void (*ptr)(void *))
 {
-  Ressource		*ressource;
+  Resource		*resource;
 
-  ressource = malloc(sizeof(Ressource));
-  ressource->data = data;
-  ressource->ptr = ptr;
-  ressource->next = MEMORYMANAGER_PTR->layers->ressources;
-  MEMORYMANAGER_PTR->layers->ressources = ressource;
+  resource = malloc(sizeof(Resource));
+  resource->data = data;
+  resource->ptr = ptr;
+  resource->next = MEMORYMANAGER_PTR->layers->resources;
+  MEMORYMANAGER_PTR->layers->resources = resource;
   ++MEMORYMANAGER_PTR->size;
 }
 
-void			create_ressource_layer()
+void			create_resource_layer()
 {
-  RessourceLayer	*layer;
+  ResourceLayer		*layer;
 
-  layer = malloc(sizeof(RessourceLayer));
-  layer->ressources = NULL;
+  layer = malloc(sizeof(ResourceLayer));
+  layer->resources = NULL;
   layer->next = MEMORYMANAGER_PTR->layers;
   MEMORYMANAGER_PTR->layers = layer;
 }
 
-void			*ressource_handle(void *data, void (*ptr)(void *))
+void			*resource_handle(void *data, void (*ptr)(void *))
 {
-  create_ressource(data, ptr);
+  create_resource(data, ptr);
   return (data);
 }
 
@@ -44,7 +44,7 @@ void			*custom_alloc(size_t size, void (*ptr)(void *))
   void			*data;
 
   data = malloc(size);
-  create_ressource(data, ptr);
+  create_resource(data, ptr);
   return (data);
 }
 
@@ -53,40 +53,40 @@ void			*alloc(size_t size)
   return (custom_alloc(size, basic_ptr_cleaner));
 }
 
-void			clean_ressource_layer()
+void			clean_resource_layer()
 {
-  RessourceLayer	*layer;
-  Ressource		*r[2];
+  ResourceLayer	*layer;
+  Resource		*r[2];
 
   layer = MEMORYMANAGER_PTR->layers;
   MEMORYMANAGER_PTR->layers = layer->next;
-  r[0] = layer->ressources;
+  r[0] = layer->resources;
   while (r[0])
     {
       r[1] = r[0];
       r[0] = r[0]->next;
-      clean_ressource(r[1]);
+      clean_resource(r[1]);
     }
   free(layer);
 }
 
 void			clean(void *ptr)
 {
-  Ressource		*r;
-  Ressource		**prev;
-  RessourceLayer	*layer;
+  Resource		*r;
+  Resource		**prev;
+  ResourceLayer		*layer;
 
   layer = MEMORYMANAGER_PTR->layers;
   while (layer)
     {
-      r = layer->ressources;
-      prev = &layer->ressources;
+      r = layer->resources;
+      prev = &layer->resources;
       while (r)
 	{
 	  if (r->data == ptr)
 	    {
 	      *prev = r->next;
-	      clean_ressource(r);
+	      clean_resource(r);
 	      --MEMORYMANAGER_PTR->size;
 	      return ;
 	    }
@@ -100,5 +100,5 @@ void			clean(void *ptr)
 void			clean_collector(MemoryManager *collector)
 {
   while (MEMORYMANAGER_PTR->layers)
-    clean_ressource_layer();
+    clean_resource_layer();
 }

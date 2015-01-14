@@ -13,7 +13,7 @@ void		graphic_stack_pop()
   s = GRAPHIC_PTR->stack;
   if (s)
     GRAPHIC_PTR->stack = s->next;
-  clean_ressource_layer();
+  clean_resource_layer();
 }
 
 void		refresh()
