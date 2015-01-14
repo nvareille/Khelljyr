@@ -2,7 +2,7 @@
 
 static void	app_builder(Khelljyr *data, void *user)
 {
-  scopper(&data->collector, 0);
+  scopper(&data->manager, 0);
   scopper(&data->graphic, 1);
   scopper(&data->graphic.stack, 2);
   scopper(user, 3);
@@ -19,6 +19,6 @@ void		app_init(void *data, void (*fct)(void *))
   if (fct)
     fct(data);
   app_event_loop();
-  clean_collector(&app->collector);
+  clean_collector(&app->manager);
   free(app);
 }

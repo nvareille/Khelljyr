@@ -6,7 +6,22 @@
 # include "../BasicWindow/BasicWindow.h"
 # include "../Graphic.h"
 
-void	create_basic_scene(void (*)(Layer *, GContext *), void (*)(Window *), void (*)(Window *), void (*)());
-void	create_basic_scene_fullscreen(void (*)(Layer *, GContext *), void (*)(Window *), void (*)(Window *), void (*)());
+/**
+ * Creates a blank screen where we can display anything
+ * @param graphic_callback The callback that must be called to display something on screen
+ * @param load The loading window_handler for the window
+ * @param unload The unloading window_handler for the window
+ * @param click_provider The function that contains click_providers
+ */
+void	create_basic_scene(void (*graphic_callback)(Layer *, GContext *), void (*load)(Window *), void (*unload)(Window *), void (*click_provider)());
+
+/**
+ * Creates a blank fullscreen where we can display anything
+ * @param graphic_callback The callback that must be called to display something on screen
+ * @param load The loading window_handler for the window
+ * @param unload The unloading window_handler for the window
+ * @param click_provider The function that contains click_providers
+ */
+void	create_basic_scene_fullscreen(void (*graphic_callback)(Layer *, GContext *), void (*load)(Window *), void (*unload)(Window *), void (*click_provider)());
 
 #endif

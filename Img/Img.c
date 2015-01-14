@@ -23,12 +23,12 @@ Img			*create_img(uint32_t r)
   return (create_img_pos(r, 0, 0));
 }
 
-void			draw_image(Img *img, GContext *ctx)
+void			draw_img(Img *img, GContext *ctx)
 {
   graphics_draw_bitmap_in_rect(ctx, img->image, img->blit);
 }
 
-void			draw_image_pos(Img *img, int x, int y, GContext *ctx)
+void			draw_img_pos(Img *img, int x, int y, GContext *ctx)
 {
   GRect			p;
 
@@ -44,16 +44,16 @@ void			set_img_pos(Img *img, int x, int y)
   img->blit.origin.y = y;
 }
 
-void			draw_image_effect(Img *img, GCompOp effect, GContext *ctx)
+void			draw_img_effect(Img *img, GCompOp effect, GContext *ctx)
 {
   graphics_context_set_compositing_mode(ctx, effect);
-  draw_image(img, ctx);
+  draw_img(img, ctx);
   graphics_context_set_compositing_mode(ctx, GCompOpAssign);
 }
 
-void			draw_image_effect_pos(Img *img, GCompOp effect, int x, int y, GContext *ctx)
+void			draw_img_effect_pos(Img *img, GCompOp effect, int x, int y, GContext *ctx)
 {
   graphics_context_set_compositing_mode(ctx, effect);
-  draw_image_pos(img, x, y, ctx);
+  draw_img_pos(img, x, y, ctx);
   graphics_context_set_compositing_mode(ctx, GCompOpAssign);
 }

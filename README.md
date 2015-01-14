@@ -1,4 +1,4 @@
-Khelljyr 0.4
+Khelljyr 0.4.1
 ![alt tag](https://github.com/nvareille/Khelljyr/blob/master/Logo.png)
 ========
 
@@ -17,20 +17,20 @@ What's implemented ?
 
 - BasicMenuScene
 
-  Possibility to create a pebble menu in just one line of code !
+  Possibility to create a pebble menu in just one line of code with create_basic_menu_scene() !
 
 - MemoryManager:
   
-  When you allocate memory with Khelljyr (alloc(), custom_alloc()) or you have memory that must be handled (ressource_handle()),
+  When you allocate memory with Khelljyr (alloc(), custom_alloc()) or you have memory that must be handled (resource_handle()),
   everything will be cleared when the window is destroyed. Forget about memory leaks with this feature !
 
 - Img:
 
-  A nice abstractions to GBitmap pictures. Very easy to use and handled by the MemoryManager, once loaded it's ready for use !
+  A nice abstractions to GBitmap pictures. Very easy to use and handled by the MemoryManager, once loaded with create_img() it's ready for use !
 
 - Useful Macros
 
-  USER_PTR will be a pointer to your user data that you pass to app_init.
+  USER_PTR will be a pointer to your user data that you pass to app_init().
   MEMORYMANAGER_PTR and GRAPHIC_PTR will return pointers to structures of the framework (without calling the fuctions and accessible everywhere in the code !)
 
 - Debug:
