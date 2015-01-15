@@ -3,6 +3,7 @@ Khelljyr 0.5
 ========
 
 A powerful pebble framework that abstracts layers, windows and implement several features like garbage collector.
+Check the examples here: https://github.com/nvareille/KhelljyrExamples
 
 What's implemented ?
 
