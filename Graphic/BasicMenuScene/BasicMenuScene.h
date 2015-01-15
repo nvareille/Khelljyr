@@ -12,6 +12,6 @@
  * @param unload The uninitialization callback to be handled by the window
  * @param section_size The number of elements in the sections array
  */
-void	create_basic_menu_scene(SimpleMenuSection *sections, void (*load)(Window *), void (*unload)(Window *), int32_t section_size);
+void	create_basic_menu_scene(const SimpleMenuSection *sections, void (*load)(Window *), void (*unload)(Window *), int32_t section_size);
 
 #endif

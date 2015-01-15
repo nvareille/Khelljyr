@@ -6,7 +6,9 @@ static void	app_builder(Khelljyr *data, void *user)
   scopper(&data->graphic, 1);
   scopper(&data->graphic.stack, 2);
   scopper(user, 3);
+  scopper(&data->message, 4);
   create_resource_layer();
+  set_safe_resource_layer();
 }
 
 void		app_init(void *data, void (*fct)(void *))

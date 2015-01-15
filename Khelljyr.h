@@ -8,6 +8,7 @@
 # include "Img/Img.h"
 # include "Utils/Utils.h"
 # include "Debug/Debug.h"
+# include "MessageManager/MessageManager.h"
 
 /**
  * A macro returning the user data given in app_init.
@@ -26,6 +27,7 @@ typedef struct		s_khelljyr_app
 {
   MemoryManager		manager;
   Graphic		graphic;
+  MessageManager	message;
 }			Khelljyr;
 
 /**

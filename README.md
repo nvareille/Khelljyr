@@ -1,4 +1,4 @@
-Khelljyr 0.4.1
+Khelljyr 0.5
 ![alt tag](https://github.com/nvareille/Khelljyr/blob/master/Logo.png)
 ========
 
@@ -23,6 +23,10 @@ What's implemented ?
   
   When you allocate memory with Khelljyr (alloc(), custom_alloc()) or you have memory that must be handled (resource_handle()),
   everything will be cleared when the window is destroyed. Forget about memory leaks with this feature !
+
+- MessageManager:
+
+  A powerfull message abstraction. It is very easy to create a message and send it to the phone. It handles success and failures
 
 - Img:
 

@@ -34,6 +34,7 @@ typedef struct			s_MemoryManager
 {
   unsigned short		size;
   ResourceLayer			*layers;
+  ResourceLayer			*safe_layer;
 }				MemoryManager;
 
 /**
@@ -43,12 +44,23 @@ typedef struct			s_MemoryManager
 void			create_resource_layer();
 
 /**
+ * (Private Function)
+ * Creates a new layer in the MemoryManager. This functions sets the safe_stack. I.E. the lowest layer on the stack. This function MUST NOT be called by the user.
+ */
+void			set_safe_resource_layer();
+
+/**
  * Allocates some memory in the MemoryManager. This function is a REPLACEMENT for malloc() function that must not be called anymore
  * @param size The size in bytes that must be allocated
  * @return An allocated pointer of the given size
  * @see clean
  */
 void			*alloc(size_t size);
+
+/**
+ * Allocate memory on the safe stack. The memory will be freed on clean() or program ending. 
+ */
+void			*safe_alloc(size_t size);
 
 /**
  * Same as alloc but takes a function pointer to a custom free function. This function should be called when user wants to uninitialize some data by a specific method

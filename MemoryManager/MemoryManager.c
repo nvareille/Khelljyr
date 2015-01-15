@@ -1,10 +1,5 @@
 #include "MemoryManager.h"
 
-static void		basic_ptr_cleaner(void *data)
-{
-  free(data);
-}
-
 static void		clean_resource(Resource *data)
 {
   data->ptr(data->data);
@@ -13,25 +8,35 @@ static void		clean_resource(Resource *data)
 
 static void		create_resource(void *data, void (*ptr)(void *))
 {
+  MemoryManager		*manager = MEMORYMANAGER_PTR;
   Resource		*resource;
 
   resource = malloc(sizeof(Resource));
   resource->data = data;
   resource->ptr = ptr;
-  resource->next = MEMORYMANAGER_PTR->layers->resources;
-  MEMORYMANAGER_PTR->layers->resources = resource;
-  ++MEMORYMANAGER_PTR->size;
+  resource->next = manager->layers->resources;
+  manager->layers->resources = resource;
+  ++manager->size;
 }
 
 void			create_resource_layer()
 {
+  MemoryManager		*manager = MEMORYMANAGER_PTR;
   ResourceLayer		*layer;
 
   layer = malloc(sizeof(ResourceLayer));
   layer->resources = NULL;
   layer->next = MEMORYMANAGER_PTR->layers;
-  MEMORYMANAGER_PTR->layers = layer;
+  manager->layers = layer;
 }
+
+void			set_safe_resource_layer()
+{
+  MemoryManager		*manager = MEMORYMANAGER_PTR;
+
+  manager->safe_layer = manager->layers;
+}
+
 
 void			*resource_handle(void *data, void (*ptr)(void *))
 {
@@ -50,16 +55,31 @@ void			*custom_alloc(size_t size, void (*ptr)(void *))
 
 void			*alloc(size_t size)
 {
-  return (custom_alloc(size, basic_ptr_cleaner));
+  return (custom_alloc(size, free));
+}
+
+void			*safe_alloc(size_t size)
+{
+  MemoryManager		*manager = MEMORYMANAGER_PTR;
+  Resource		*resource;
+
+  resource = malloc(sizeof(Resource));
+  resource->ptr = free;
+  resource->data = malloc(size);
+  resource->next = manager->safe_layer->resources;
+  manager->safe_layer->resources = resource;
+  ++manager->size;
+  return (resource->data);
 }
 
 void			clean_resource_layer()
 {
-  ResourceLayer	*layer;
+  MemoryManager		*manager = MEMORYMANAGER_PTR;
+  ResourceLayer		*layer;
   Resource		*r[2];
 
-  layer = MEMORYMANAGER_PTR->layers;
-  MEMORYMANAGER_PTR->layers = layer->next;
+  layer = manager->layers;
+  manager->layers = layer->next;
   r[0] = layer->resources;
   while (r[0])
     {
@@ -72,11 +92,12 @@ void			clean_resource_layer()
 
 void			clean(void *ptr)
 {
+  MemoryManager		*manager = MEMORYMANAGER_PTR;
   Resource		*r;
   Resource		**prev;
   ResourceLayer		*layer;
 
-  layer = MEMORYMANAGER_PTR->layers;
+  layer = manager->layers;
   while (layer)
     {
       r = layer->resources;
@@ -87,7 +108,7 @@ void			clean(void *ptr)
 	    {
 	      *prev = r->next;
 	      clean_resource(r);
-	      --MEMORYMANAGER_PTR->size;
+	      --manager->size;
 	      return ;
 	    }
 	  prev = &r->next;
@@ -99,6 +120,8 @@ void			clean(void *ptr)
 
 void			clean_collector(MemoryManager *collector)
 {
-  while (MEMORYMANAGER_PTR->layers)
+  MemoryManager		*manager = MEMORYMANAGER_PTR;
+
+  while (manager->layers)
     clean_resource_layer();
 }

@@ -5,7 +5,7 @@ static void	free_simple_menu_layer(void *data)
   simple_menu_layer_destroy(data);
 }
 
-void		create_basic_menu_scene(SimpleMenuSection *sections, void (*load)(Window *), void (*unload)(Window *), int32_t size)
+void		create_basic_menu_scene(const SimpleMenuSection *sections, void (*load)(Window *), void (*unload)(Window *), int32_t size)
 {
   GraphicStack	*stack = alloc(sizeof(GraphicStack));
   Window	*window = create_window(NULL, load, unload);
