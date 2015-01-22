@@ -1,4 +1,4 @@
-Khelljyr 0.5
+Khelljyr 0.6
 ![alt tag](https://github.com/nvareille/Khelljyr/blob/master/Logo.png)
 ========
 
@@ -46,3 +46,7 @@ What's implemented ?
 
   putstr() will write some text in a graphic context very easily
   putstr_font() will write some text with custom font
+
+- Timers:
+  
+  Some useful timers that repeat themselves and are easy to handle.

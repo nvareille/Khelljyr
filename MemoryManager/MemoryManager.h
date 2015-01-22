@@ -58,9 +58,20 @@ void			set_safe_resource_layer();
 void			*alloc(size_t size);
 
 /**
- * Allocate memory on the safe stack. The memory will be freed on clean() or program ending. 
+ * Allocates some memory for an array. Just one allocation will be done.
+ * @param size The size of the type to be allocated.
+ * @param nbr The size of the array to allocate.
+ * @see clean
  */
-void			*safe_alloc(size_t size);
+void			**array_alloc(size_t size, unsigned int nbr);
+
+/**
+ * Allocate memory on the safe stack. The memory will be freed on clean() or program ending. 
+ * @param size The size to allocate
+ * @param ptr The freeing function
+ * @return a pointer of the allocated memory size
+ */
+void			*safe_alloc(size_t size, void (*ptr)(void *));
 
 /**
  * Same as alloc but takes a function pointer to a custom free function. This function should be called when user wants to uninitialize some data by a specific method
@@ -107,5 +118,11 @@ void			clean_resource_layer();
  * A Macro that returns a pointer to the MemoryManager structure for the framework
  */
 # define MEMORYMANAGER_PTR ((MemoryManager *)scopper(NULL, 0))
+
+/**
+ * A basic overload for array_alloc. It is more convenient to use it (no casts to do and slightly less to write)
+ * @see array_alloc
+ */
+# define ARRAY_ALLOC(TYPE, NBR) ((TYPE **)array_alloc(sizeof(TYPE), NBR))
 
 #endif

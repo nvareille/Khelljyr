@@ -58,13 +58,31 @@ void			*alloc(size_t size)
   return (custom_alloc(size, free));
 }
 
-void			*safe_alloc(size_t size)
+void			**array_alloc(size_t size, unsigned int nbr)
+{
+  void			*pos;
+  void			**ptr;
+  unsigned int		count = 0;
+
+  pos = alloc(sizeof(void **) * nbr + size * nbr);
+  ptr = pos;
+  pos += (sizeof(void **) * nbr);
+  while (count < nbr)
+    {
+      ptr[count] = pos;
+      pos += size;
+      ++count;
+    }
+  return (ptr);
+}
+
+void			*safe_alloc(size_t size, void (*ptr)(void *))
 {
   MemoryManager		*manager = MEMORYMANAGER_PTR;
   Resource		*resource;
 
   resource = malloc(sizeof(Resource));
-  resource->ptr = free;
+  resource->ptr = ptr;
   resource->data = malloc(size);
   resource->next = manager->safe_layer->resources;
   manager->safe_layer->resources = resource;

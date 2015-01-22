@@ -9,6 +9,7 @@
 # include "Utils/Utils.h"
 # include "Debug/Debug.h"
 # include "MessageManager/MessageManager.h"
+# include "Timer/Timer.h"
 
 /**
  * A macro returning the user data given in app_init.

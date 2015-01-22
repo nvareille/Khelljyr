@@ -17,7 +17,7 @@ void			message_add_string(int key, char *value, DictionaryIterator *it)
 static void		message_add_time(void (*ptr)(DictionaryIterator *, void *), void *data, void (*success)(void *), void (*fail)(void *), int time)
 {
   MessageManager	*manager = MESSAGEMANAGER_PTR;
-  Message		*message = safe_alloc(sizeof(Message));
+  Message		*message = safe_alloc(sizeof(Message), free);
 
   message->ptr = ptr;
   message->data = data;
