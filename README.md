@@ -1,4 +1,4 @@
-Khelljyr 0.6
+Khelljyr 0.7
 ![alt tag](https://github.com/nvareille/Khelljyr/blob/master/Logo.png)
 ========
 
@@ -19,6 +19,10 @@ What's implemented ?
 - BasicMenuScene
 
   Possibility to create a pebble menu in just one line of code with create_basic_menu_scene() !
+
+- BasicTextScene
+
+  Possibility to create a Scrolling text in just one line of code with create_basic_text_scene() !
 
 - MemoryManager:
   

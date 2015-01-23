@@ -4,6 +4,7 @@
 # include "BasicWindow/BasicWindow.h"
 # include "BasicScene/BasicScene.h"
 # include "BasicMenuScene/BasicMenuScene.h"
+# include "BasicTextScene/BasicTextScene.h"
 
 /**
  * The index number for the GraphicStack array windows layer
