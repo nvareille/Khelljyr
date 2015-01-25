@@ -24,6 +24,10 @@ What's implemented ?
 
   Possibility to create a Scrolling text in just one line of code with create_basic_text_scene() !
 
+- InvertLayer
+
+  An abstraction of the Inverted Layer. Very easy to use, move and change the size.
+
 - MemoryManager:
   
   When you allocate memory with Khelljyr (alloc(), custom_alloc()) or you have memory that must be handled (resource_handle()),
@@ -50,6 +54,7 @@ What's implemented ?
 
   putstr() will write some text in a graphic context very easily
   putstr_font() will write some text with custom font
+  draw_line() will trace a line on the pebble screen
 
 - Timers:
   

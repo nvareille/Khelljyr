@@ -28,4 +28,14 @@ void	putstr(char *str, int x, int y, GContext *ctx);
  */
 void	putstr_font(char *str, const char *font, int x, int y, GContext *ctx);
 
+/**
+ * Draw a line on the screen
+ * @param x The starting point on x
+ * @param y The starting point on y
+ * @param x2 The stopping point on x
+ * @param y2 The stopping point on y
+ * @param ctx The graphical context
+ */
+void	draw_line(int x, int y, int x2, int y2, GContext *ctx);
+
 #endif

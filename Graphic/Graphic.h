@@ -5,6 +5,7 @@
 # include "BasicScene/BasicScene.h"
 # include "BasicMenuScene/BasicMenuScene.h"
 # include "BasicTextScene/BasicTextScene.h"
+# include "BasicInvertedLayer/BasicInvertedLayer.h"
 
 /**
  * The index number for the GraphicStack array windows layer
