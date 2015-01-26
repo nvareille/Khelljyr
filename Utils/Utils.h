@@ -16,7 +16,7 @@
  * @param y The y coordinate on screen.
  * @param ctx The Graphical Context of the screen.
  */
-void	putstr(char *str, int x, int y, GContext *ctx);
+void	putstr(const char *str, int x, int y, GContext *ctx);
 
 /**
  * This function print some text on the watch screen with selected font.
@@ -26,7 +26,7 @@ void	putstr(char *str, int x, int y, GContext *ctx);
  * @param y The y coordinate on screen.
  * @param ctx The Graphical Context of the screen.
  */
-void	putstr_font(char *str, const char *font, int x, int y, GContext *ctx);
+void	putstr_font(const char *str, const char *font, int x, int y, GContext *ctx);
 
 /**
  * Draw a line on the screen

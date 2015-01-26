@@ -3,7 +3,7 @@
 
 # include <pebble.h>
 # include "../../MemoryManager/MemoryManager.h"
-# include "../Graphic.h"
+# include "../GraphicStack.h"
 
 typedef struct	s_InvertLayer
 {

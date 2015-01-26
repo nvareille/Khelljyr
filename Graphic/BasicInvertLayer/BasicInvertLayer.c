@@ -1,4 +1,4 @@
-#include "BasicInvertedLayer.h"
+#include "BasicInvertLayer.h"
 
 static void		free_layer(void *data)
 {

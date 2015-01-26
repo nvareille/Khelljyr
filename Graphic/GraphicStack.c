@@ -24,3 +24,16 @@ void		refresh()
   if (s)
     layer_mark_dirty(GRAPHIC_PTR->stack->layer[LAYER]);
 }
+
+void		*get_window_data()
+{
+  return (GRAPHIC_PTR->stack->stack_ptr);
+}
+
+void		set_window_data(void *data)
+{
+  GraphicStack	*stack;
+
+  stack = GRAPHIC_PTR->stack;
+  stack->stack_ptr = data;
+}
