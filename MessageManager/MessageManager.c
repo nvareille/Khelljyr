@@ -85,7 +85,7 @@ static void		success_send(DictionaryIterator *iterator, void *context)
 {
   MessageManager	*manager = MESSAGEMANAGER_PTR;
 
-  if (manager->processing->success)
+  if (manager && manager->processing && manager->processing->success)
     manager->processing->success(manager->processing->data);
   clean(manager->processing);
   manager->processing = NULL;
@@ -97,12 +97,14 @@ static void		fail_send(DictionaryIterator *iterator, AppMessageResult reason, vo
   push_message(MESSAGEMANAGER_PTR);
 }
 
+# include "../Debug/Debug.h"
+
 static void		message_receive(DictionaryIterator *it, void *ctx)
 {
   Tuple			*tuple = dict_read_first(it);
   MessageManager	*manager = MESSAGEMANAGER_PTR;
 
-  if (tuple)
+  if (tuple && tuple->value->int32 >= 0)
     manager->ptr[tuple->value->int32](it, ctx);
 }
 
