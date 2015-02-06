@@ -1,4 +1,4 @@
-Khelljyr 0.9
+Khelljyr 0.10
 ![alt tag](https://github.com/nvareille/Khelljyr/blob/master/Logo.png)
 ========
 
@@ -58,6 +58,7 @@ What's implemented ?
 
   putstr() will write some text in a graphic context very easily
   putstr_font() will write some text with custom font
+  putstr_format() will write some text with format
   draw_line() will trace a line on the pebble screen
 
 - Timers:

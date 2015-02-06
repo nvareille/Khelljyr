@@ -38,4 +38,15 @@ void	putstr_font(const char *str, const char *font, int x, int y, GContext *ctx)
  */
 void	draw_line(int x, int y, int x2, int y2, GContext *ctx);
 
+/**
+ * Writes on screen text following the given callback format
+ * @param size The size of the string the callback will receive
+ * @param ptr The callback that will do the snprintf formating
+ * @param data The data given to the callback
+ * @param x The x coordinate to display text
+ * @param y The y coordinate to display text
+ * @param ctx The Graphical context of the window
+ */
+void	putstr_format(size_t size, void (*ptr)(void *, char *, size_t), void *data, int x, int y, GContext *ctx);
+
 #endif
