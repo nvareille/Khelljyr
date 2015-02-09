@@ -20,6 +20,7 @@ typedef struct		s_GraphicStack
   void			*layer[2];
   struct s_GraphicStack	*next;
   void			*stack_ptr;
+  void			(*unload)(Window *);
 }			GraphicStack;
 
 /**
@@ -61,12 +62,17 @@ void			refresh();
  * Get the user data from window stack
  * @return The previously stored user data
  */
-void		*get_window_data();
+void			*get_window_data();
 
 /**
  * Stores a data in the curent window
  * @param data The user data to store
  */
-void		set_window_data(void *data);
+void			set_window_data(void *data);
+
+/**
+ * Removes the upper window of the stack from the stack. It acts the same as window_stack_pop but calls the unload callback of the window
+ */
+void			window_pop();
 
 #endif

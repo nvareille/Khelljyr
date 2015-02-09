@@ -37,3 +37,8 @@ void		set_window_data(void *data)
   stack = GRAPHIC_PTR->stack;
   stack->stack_ptr = data;
 }
+
+void		window_pop()
+{
+  clean(window_stack_pop(true));
+}

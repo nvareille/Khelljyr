@@ -131,7 +131,7 @@ static void	select()
       c = get_char(keyboard->state.x, keyboard->state.y);
       if (c == '<')
 	{
-	  window_stack_pop(true);
+	  window_pop();
 	  keyboard->size = strlen(keyboard->str);
 	  keyboard->ptr(keyboard);
 	  clean(keyboard);

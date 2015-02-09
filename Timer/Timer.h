@@ -11,10 +11,9 @@
 typedef struct	s_Timer
 {
   AppTimer	*timer;
-  void		(*fct)(void *, struct s_Timer *);
+  bool		(*fct)(void *, struct s_Timer *);
   void		*data;
   uint32_t	ms;
-  bool		active;
 }		Timer;
 
 /**
@@ -24,7 +23,7 @@ typedef struct	s_Timer
  * @param data A pointer to a user data received in the callback.
  * @return A timer structure containing the timer data.
  */
-Timer		*create_timer(uint32_t ms, void (*fct)(void *, Timer *), void *data);
+Timer		*create_timer(uint32_t ms, bool (*fct)(void *, Timer *), void *data);
 
 /**
  * Reschedule a timer.

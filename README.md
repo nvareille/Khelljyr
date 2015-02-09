@@ -1,4 +1,4 @@
-Khelljyr 0.10
+Khelljyr 0.11
 ![alt tag](https://github.com/nvareille/Khelljyr/blob/master/Logo.png)
 ========
 

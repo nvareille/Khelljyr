@@ -5,6 +5,7 @@
 
 # include "../../MemoryManager/MemoryManager.h"
 # include "../Graphic.h"
+# include "../GraphicStack.h"
 
 /**
  * Create a window that is handled by the MemoryManager
@@ -12,6 +13,6 @@
  * @param load The loading callback for the window
  * @param unload The unloading callback for the window
  */
-Window		*create_window(void (*graphic_callback)(Layer *, GContext *), void (*load)(Window *), void (*unload)(Window *));
+GraphicStack	*create_window(void (*graphic_callback)(Layer *, GContext *), void (*load)(Window *), void (*unload)(Window *));
 
 #endif

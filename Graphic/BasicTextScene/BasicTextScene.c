@@ -12,13 +12,10 @@ static void	free_text_layer(void *data)
 
 void		create_basic_text_scene(char *str, void (*load)(Window *), void (*unload)(Window *))
 {
-  GraphicStack	*stack = alloc(sizeof(GraphicStack));
-  Window	*window = create_window(NULL, load, unload);
+  GraphicStack	*stack = create_window(NULL, load, unload);
   GRect		rect;
 
-  graphic_stack_push(stack);
-  stack->window = window;
-  stack->layer[WINDOW_LAYER] = window_get_root_layer(window);
+  stack->layer[WINDOW_LAYER] = window_get_root_layer(stack->window);
   rect = layer_get_frame(stack->layer[WINDOW_LAYER]);
   stack->layer[LAYER] = resource_handle(scroll_layer_create(rect), free_scroll_layer);
   layer_add_child(stack->layer[WINDOW_LAYER], stack->layer[LAYER]);
