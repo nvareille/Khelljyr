@@ -1,4 +1,3 @@
-#include <stdarg.h>
 #include "Utils.h"
 
 void	putstr_font(const char *str, const char *key, int x, int y, GContext *ctx)
@@ -17,10 +16,15 @@ void	putstr(const char *str, int x, int y, GContext *ctx)
   putstr_font(str, FONT_KEY_GOTHIC_14, x, y, ctx);
 }
 
-void	putstr_format(size_t size, void (*ptr)(void *, char *, size_t), void *data, int x, int y, GContext *ctx)
+void	putstr_format_font(size_t size, void (*ptr)(void *, char *, size_t), void *data, const char *font, int x, int y, GContext *ctx)
 {
   char	disp[size];
 
   ptr(data, disp, size);
-  putstr(disp, x, y, ctx);
+  putstr_font(disp, font, x, y, ctx);
+}
+
+void	putstr_format(size_t size, void (*ptr)(void *, char *, size_t), void *data, int x, int y, GContext *ctx)
+{
+  putstr_format_font(size, ptr, data, FONT_KEY_GOTHIC_14, x, y, ctx);
 }

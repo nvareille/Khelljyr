@@ -76,8 +76,6 @@ void			**array_alloc(size_t size, unsigned int nbr)
   return (ptr);
 }
 
-# include "../Debug/Debug.h"
-
 void			*safe_alloc(size_t size, void (*ptr)(void *))
 {
   MemoryManager		*manager = MEMORYMANAGER_PTR;

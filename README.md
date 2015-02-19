@@ -1,4 +1,4 @@
-Khelljyr 0.11
+Khelljyr 0.12
 ![alt tag](https://github.com/nvareille/Khelljyr/blob/master/Logo.png)
 ========
 
@@ -64,3 +64,7 @@ What's implemented ?
 - Timers:
   
   Some useful timers that repeat themselves and are easy to handle.
+
+- Containers
+
+  Lists and Stacks that can be iterated with the foreach function
