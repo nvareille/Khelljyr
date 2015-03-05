@@ -12,7 +12,13 @@ Img			*create_img_pos(uint32_t r, short x, short y)
 
   img = custom_alloc(sizeof(Img), clean_image);
   img->image = gbitmap_create_with_resource(r);
-  img->blit.size = img->image->bounds.size;  
+
+#ifdef PBL_PLATFORM_BASALT
+  img->blit.size = gbitmap_get_bounds(img->image).size;
+#else
+  img->blit.size = img->image->bounds.size;
+#endif
+
   img->blit.origin.x = x;
   img->blit.origin.y = y;
   return (img);
@@ -32,7 +38,12 @@ void			draw_img_pos(Img *img, int x, int y, GContext *ctx)
 {
   GRect			p;
 
+#ifdef PBL_PLATFORM_BASALT
+  p.size = gbitmap_get_bounds(img->image).size;
+#else
   p.size = img->image->bounds.size;
+#endif
+
   p.origin.x = x;
   p.origin.y = y;
   graphics_draw_bitmap_in_rect(ctx, img->image, p);

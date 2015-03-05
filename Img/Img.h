@@ -1,6 +1,7 @@
 #ifndef IMG_H_
 # define IMG_H_
 
+# include <pebble.h>
 # include "../MemoryManager/MemoryManager.h"
 
 /**
