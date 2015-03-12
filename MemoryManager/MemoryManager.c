@@ -16,7 +16,6 @@ static void		create_resource(void *data, void (*ptr)(void *))
   resource->ptr = ptr;
   resource->next = manager->layers->resources;
   manager->layers->resources = resource;
-  ++manager->size;
 }
 
 void			create_resource_layer()
@@ -86,7 +85,6 @@ void			*safe_alloc(size_t size, void (*ptr)(void *))
   resource->data = malloc(size);
   resource->next = manager->safe_layer->resources;
   manager->safe_layer->resources = resource;
-  ++manager->size;
   return (resource->data);
 }
 
@@ -126,7 +124,6 @@ void			clean(void *ptr)
 	    {
 	      *prev = r->next;
 	      clean_resource(r);
-	      --manager->size;
 	      return ;
 	    }
 	  prev = &r->next;

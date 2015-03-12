@@ -79,4 +79,9 @@ void			message_add_string(int key, char *value, DictionaryIterator *it);
  */
 # define MESSAGEMANAGER_PTR ((MessageManager *)scopper(NULL, 4))
 
+# define ASK_SAVE	0
+# define SET_SAVE	1
+# define ASK_URL	2
+# define DELETE_SAVE	3
+
 #endif

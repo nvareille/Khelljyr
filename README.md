@@ -1,8 +1,10 @@
-Khelljyr 0.12.1
+Khelljyr 0.13
 ![alt tag](https://github.com/nvareille/Khelljyr/blob/master/Logo.png)
 ========
 
 A powerful pebble framework that abstracts layers, windows and implement several features like garbage collector.
+
+Check and install the Khelljyr tool here: https://github.com/nvareille/KhelljyrTools
 Check the examples here: https://github.com/nvareille/KhelljyrExamples
 
 What's implemented ?
@@ -68,3 +70,7 @@ What's implemented ?
 - Containers
 
   Lists and Stacks that can be iterated with the foreach function
+
+- Javascript Framework
+
+  A JavaScript framework generic enough to be bundled just one time ! It handles the http requests and the saves.

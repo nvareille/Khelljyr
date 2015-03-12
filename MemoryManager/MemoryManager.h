@@ -32,7 +32,6 @@ typedef struct			s_ResourceLayer
  */
 typedef struct			s_MemoryManager
 {
-  unsigned short		size;
   ResourceLayer			*layers;
   ResourceLayer			*safe_layer;
 }				MemoryManager;
