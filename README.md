@@ -1,4 +1,4 @@
-Khelljyr 0.13
+Khelljyr 0.13 - Much better with KhelljyrTools (https://github.com/nvareille/KhelljyrTools)
 ![alt tag](https://github.com/nvareille/Khelljyr/blob/master/Logo.png)
 ========
 
