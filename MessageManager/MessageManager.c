@@ -43,8 +43,8 @@ void			message_format(int key, const char *format, DictionaryIterator *it, ...)
   va_list		list;
   int			count = 0;
 
-  va_start(list, it);
   message_add_int(0, key, it);
+  va_start(list, it);
   while (*format)
     {
       if (*format == 's')
@@ -131,6 +131,5 @@ void			message_init(int in, int out, void *ctx, void (**ptr)(DictionaryIterator 
   app_message_register_outbox_failed(fail_send);
   app_message_register_inbox_received(message_receive);
   app_message_set_context(ctx);
-  app_message_open(in, out);
-  
+  app_message_open(in, out);  
 }

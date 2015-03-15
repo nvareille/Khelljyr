@@ -7,7 +7,7 @@ exec[0] = function ask_save(e)
     var	success = e[2] != null ? e[2] : -1;
     var	failure = e[3] != null ? e[3] : -1;
     var	data = {};
-    
+
     if (localStorage.getItem(item) === null)
 	Pebble.sendAppMessage({0: failure});
     else
@@ -33,6 +33,7 @@ exec[1] = function set_save(e)
 	++count;
     }
     localStorage.setItem(item_name, JSON.stringify(data));
+    var_dump(data);
     Pebble.sendAppMessage(data);
 }
 
@@ -47,10 +48,10 @@ exec[2] = function http_request(e)
     req.open('GET', e[1], false);
     req.send(null);
     data = JSON.parse(req.responseText);
-    rep[0] = e[2];
-    while (data[count] != null)
+    rep[0] = success;
+    for (var key in data)
     {
-	rep[1 + count] = data[count];
+	rep[1 + count] = data[key];
 	++count;
     }
     Pebble.sendAppMessage(rep);
@@ -60,7 +61,7 @@ exec[3] = function remove_save(e)
 {
     var item = e[1];
     var	success = e[2] != null ? e[2] : -1;
-    
+
     localStorage.removeItem(item);
     Pebble.sendAppMessage({0: success});
 }
@@ -77,6 +78,11 @@ function sendConnect(e)
 
 function appMessageUpdate(e)
 {
+    if (e.payload[0] == null)
+    {
+	e.payload[0] = e.payload["dummy"];
+	delete e.payload["dummy"]
+    }
     exec[e.payload[0]](e.payload);
 }
 

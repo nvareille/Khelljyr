@@ -89,7 +89,7 @@ void			message_add_string(int key, char *value, DictionaryIterator *it);
 /**
  * The action id to retrieve a save with Khelljyr's javascript framework
  */
-# define ASK_SAVE	0
+# define GET_SAVE	0
 
 /**
  * The action id to set a save with Khelljyr's javascript framework
@@ -99,7 +99,7 @@ void			message_add_string(int key, char *value, DictionaryIterator *it);
 /**
  * The action id to retrieve a content from a URL with Khelljyr's javascript framework. The content must be json formated
  */
-# define ASK_URL	2
+# define GET_URL	2
 
 /**
  * The action id to delete a save with Khelljyr's javascript framework
