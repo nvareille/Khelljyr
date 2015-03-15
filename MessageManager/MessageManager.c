@@ -1,3 +1,4 @@
+#include <stdarg.h>
 #include "MessageManager.h"
 
 void			message_add_int(int key, int value, DictionaryIterator *it)
@@ -34,6 +35,23 @@ static void		message_add_time(void (*ptr)(DictionaryIterator *, void *), void *d
     {
       manager->queue = message;
       manager->last = message;
+    }
+}
+
+void			message_format(int key, const char *format, DictionaryIterator *it, ...)
+{
+  va_list		list;
+  int			count = 0;
+
+  va_start(list, it);
+  message_add_int(0, key, it);
+  while (*format)
+    {
+      if (*format == 's')
+	message_add_string(++count, va_arg(list, char *), it);
+      if (*format == 'd')
+	message_add_int(++count, va_arg(list, int), it);
+      ++format;
     }
 }
 

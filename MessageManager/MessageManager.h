@@ -30,7 +30,6 @@ typedef struct		s_MessageManager
   void			(**ptr)(DictionaryIterator *, void *);
 }			MessageManager;
 
-
 /**
  * Initialize the messages in the Framework. Sets the inbounds and outbounds of the Message memory and the callbacks
  * @param in The size of the memory for receiving data
@@ -57,6 +56,14 @@ void			message_add(void (*writing_callback)(DictionaryIterator *, void *), void 
 void			message_process();
 
 /**
+ * Writes a message, following the given pattern. For example if format is "ssi" the function will take 2 strings and 1 int as parameters and will write them.
+ * @param key The action id to perform in the JavaScript
+ * @param format The format to write, the parameters must follow the parttern
+ * @param it The iterator on the message's Dictionary
+ */
+void			message_format(int key, const char *format, DictionaryIterator *it, ...);
+
+/**
  * Writes an int in the message. this function is made for the writing_callbacks of message_add.
  * @param key The key in the array when received.
  * @param value The value to put in the array
@@ -79,9 +86,24 @@ void			message_add_string(int key, char *value, DictionaryIterator *it);
  */
 # define MESSAGEMANAGER_PTR ((MessageManager *)scopper(NULL, 4))
 
+/**
+ * The action id to retrieve a save with Khelljyr's javascript framework
+ */
 # define ASK_SAVE	0
+
+/**
+ * The action id to set a save with Khelljyr's javascript framework
+ */
 # define SET_SAVE	1
+
+/**
+ * The action id to retrieve a content from a URL with Khelljyr's javascript framework. The content must be json formated
+ */
 # define ASK_URL	2
+
+/**
+ * The action id to delete a save with Khelljyr's javascript framework
+ */
 # define DELETE_SAVE	3
 
 #endif
