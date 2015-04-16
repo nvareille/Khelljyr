@@ -2,6 +2,7 @@
 
 void		graphic_stack_push(GraphicStack *s)
 {
+  s->stack_ptr = NULL;
   s->next = GRAPHIC_PTR->stack;
   GRAPHIC_PTR->stack = s;
 }
