@@ -52,7 +52,7 @@ static void	free_keyboard(void *data)
   free(keyboard);
 }
 
-static Keyboard	*create_keyboard(char *str, size_t size, void (*ptr)(Keyboard *))
+static Keyboard	*create_keyboard(char *str, size_t size, void (*ptr)(Keyboard *), void *data)
 {
   Keyboard	*keyboard = safe_alloc(sizeof(Keyboard), free_keyboard);
   
@@ -60,6 +60,7 @@ static Keyboard	*create_keyboard(char *str, size_t size, void (*ptr)(Keyboard *)
   if (str)
     strncpy(keyboard->str, str, size);
   keyboard->size = size;
+  keyboard->data = data;
   keyboard->ptr = ptr;
   keyboard->state.x = 0;
   keyboard->state.y = 0;
@@ -165,11 +166,16 @@ static void	click()
   window_single_click_subscribe(BUTTON_ID_BACK, back);
 }
 
-void		create_basic_keyboard_scene(char *str, size_t size, void (*ptr)(Keyboard *))
+void		create_basic_keyboard_scene_arg(char *str, size_t size, void (*ptr)(Keyboard *), void *data)
 {
   Keyboard	*keyboard;
 
   create_basic_scene(graphic, NULL, NULL, click);
-  keyboard = create_keyboard(str, size, ptr);
+  keyboard = create_keyboard(str, size, ptr, data);
   set_window_data(keyboard);
+}
+
+void		create_basic_keyboard_scene(char *str, size_t size, void (*ptr)(Keyboard *))
+{
+  create_basic_keyboard_scene_arg(str, size, ptr, NULL);
 }

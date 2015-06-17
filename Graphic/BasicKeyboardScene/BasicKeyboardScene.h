@@ -26,6 +26,7 @@ typedef struct	s_Keyboard
   char		*str;
   size_t	size;
   KeyboardState	state;
+  void		*data;
   void		(*ptr)(struct s_Keyboard *);
 }		Keyboard;
 
@@ -37,5 +38,7 @@ typedef struct	s_Keyboard
  * @see Keyboard
  */
 void		create_basic_keyboard_scene(char *str, size_t size, void (*ptr)(Keyboard *));
+
+void		create_basic_keyboard_scene_arg(char *str, size_t size, void (*ptr)(Keyboard *), void *data);
 
 #endif
