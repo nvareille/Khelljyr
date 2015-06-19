@@ -5,6 +5,7 @@
 
 # include "../Scopper/Scopper.h"
 # include "../MemoryManager/MemoryManager.h"
+# include "../Timer/Timer.h"
 
 /**
  * A container for our messages. It contains the callbacks and all the data.

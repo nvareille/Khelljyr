@@ -55,8 +55,9 @@ void			message_format(int key, const char *format, DictionaryIterator *it, ...)
     }
 }
 
-static void		push_message(MessageManager *manager)
+static bool		push_message(void *m, Timer *t)
 {
+  MessageManager	*manager = m;
   DictionaryIterator    *it;
 
   if (manager->processing)
@@ -68,7 +69,7 @@ static void		push_message(MessageManager *manager)
 	  manager->processing->ptr(it, manager->processing->data);
 	  dict_write_end(it);
 	  if (app_message_outbox_send() == APP_MSG_BUSY)
-	    push_message(manager);
+	    create_timer(100, push_message, manager);
 	}
       else
 	{
@@ -78,6 +79,7 @@ static void		push_message(MessageManager *manager)
 	  manager->processing = NULL;
 	}
     }
+  return (false);
 }
 
 void			message_process()
@@ -90,7 +92,7 @@ void			message_process()
       manager->queue = manager->processing->next;
       if (manager->queue == NULL)
 	manager->last = NULL;
-      push_message(manager);
+      push_message(manager, NULL);
     }
 }
 
@@ -112,7 +114,7 @@ static void		success_send(DictionaryIterator *iterator, void *context)
 
 static void		fail_send(DictionaryIterator *iterator, AppMessageResult reason, void *context)
 {
-  push_message(MESSAGEMANAGER_PTR);
+  push_message(MESSAGEMANAGER_PTR, NULL);
 }
 
 static void		message_receive(DictionaryIterator *it, void *ctx)

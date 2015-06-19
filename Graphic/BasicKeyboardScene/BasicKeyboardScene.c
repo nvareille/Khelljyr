@@ -1,48 +1,6 @@
 #include "BasicKeyboardScene.h"
 
-static const char	*keys[] =
-  {
-    "0",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "q",
-    "w",
-    "e",
-    "r",
-    "t",
-    "y",
-    "u",
-    "i",
-    "o",
-    "p",
-    "a",
-    "s",
-    "d",
-    "f",
-    "g",
-    "h",
-    "j",
-    "k",
-    "l",
-    "*",
-    "z",
-    "x",
-    "c",
-    "v",
-    "b",
-    "n",
-    "m",
-    "_",
-    "@",
-    "."
-  };
+static const char	*keys = "0123456789qwertyuiopasdfghjkl*zxcvbnm_@.";
 
 static void	free_keyboard(void *data)
 {
@@ -72,7 +30,9 @@ static void	graphic(Layer *l, GContext *ctx)
 {
   unsigned int	count = 0;
   Keyboard	*keyboard = get_window_data();
+  char		letter[2];
 
+  letter[1] = 0;
   putstr(keyboard->str, 0, 0, ctx);
   draw_line(0, 15, 144, 15, ctx);
   if (keyboard->state.y != 4)
@@ -85,9 +45,10 @@ static void	graphic(Layer *l, GContext *ctx)
       invert_set_pos(keyboard->state.layer, 25 + (keyboard->state.x >= 5 ? 57 : 0), 120);
       invert_set_size(keyboard->state.layer, 42, 15);
     }
-  while (count < SIZE(keys))
+  while (count < 40)
     {
-      putstr(keys[count], 5 + (count % 10) * 14, 18 + ((count / 10) * 23), ctx);
+      letter[0] = keys[count];
+      putstr(letter, 5 + (count % 10) * 14, 18 + ((count / 10) * 23), ctx);
       ++count;
     }
   putstr("Space", 30, 120, ctx);
@@ -117,7 +78,7 @@ static char	get_char(int x, int y)
   if (y == 4)
     c = (x >= 5 ? '<' : ' ');
   else
-    c = (*keys[x + y * 10]);
+    c = (keys[x + y * 10]);
   return (c);
 }
 
@@ -155,7 +116,6 @@ static void	back()
   if (keyboard->size && count < keyboard->size)
     keyboard->str[count - 1] = 0;
   refresh();
-
 }
 
 static void	click()
