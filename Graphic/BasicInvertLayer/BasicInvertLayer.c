@@ -1,5 +1,6 @@
 #include "BasicInvertLayer.h"
 
+#ifdef PBL_PLATFORM_APLITE
 static void		free_layer(void *data)
 {
   InvertLayer		*layer = data;
@@ -7,9 +8,11 @@ static void		free_layer(void *data)
   inverter_layer_destroy(layer->inv);
   free(layer);
 }
+#endif
 
 InvertLayer		*create_invert_layer(int x, int y, int width, int height)
 {
+  #ifdef PBL_PLATFORM_APLITE
   InvertLayer		*layer = custom_alloc(sizeof(InvertLayer), free_layer);
   GRect			rect;
 
@@ -21,6 +24,9 @@ InvertLayer		*create_invert_layer(int x, int y, int width, int height)
   layer->layer = inverter_layer_get_layer(layer->inv); 
   layer_add_child(GRAPHIC_PTR->stack->layer[WINDOW_LAYER], layer->layer);
   return (layer);
+  #else
+  return (NULL);
+  #endif
 }
 
 void			invert_set_size(InvertLayer *inv, int x, int y)

@@ -12,7 +12,9 @@ static void	fct_basic_scene(void (*fct)(Layer *, GContext *), void (*load)(Windo
   GraphicStack	*stack = create_window(fct, load, unload);
   GRect		rect;
 
+  #ifdef PBL_PLATFORM_APLITE
   window_set_fullscreen(stack->window, full);
+  #endif
   stack->layer[WINDOW_LAYER] = window_get_root_layer(stack->window);
   rect = layer_get_frame(stack->layer[WINDOW_LAYER]);
   stack->layer[LAYER] = resource_handle(layer_create(rect), free_layer);

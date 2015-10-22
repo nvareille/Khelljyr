@@ -11,6 +11,7 @@
 # include "Debug/Debug.h"
 # include "MessageManager/MessageManager.h"
 # include "Timer/Timer.h"
+# include "DictationManager/DictationManager.h"
 
 /**
  * A macro returning the user data given in app_init.
@@ -30,6 +31,9 @@ typedef struct		s_khelljyr_app
   MemoryManager		manager;
   Graphic		graphic;
   MessageManager	message;
+  #ifndef PBL_PLATFORM_APLITE
+  DictationManager	dictation_manager;
+  #endif
 }			Khelljyr;
 
 /**

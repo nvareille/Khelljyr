@@ -1,7 +1,11 @@
 #ifndef SCOPPER_H_
 # define SCOPPER_H_
 
-# define SCOPPER_ELEMENT_NBR 5
+# ifndef PBL_PLATFORM_APLITE
+#  define SCOPPER_ELEMENT_NBR 6
+# else
+#  define SCOPPER_ELEMENT_NBR 5
+# endif
 
 /**
  * This function saves and returns some critical data for the framework. If you want to get data from it, it is more convenient to use the macros like USER_PTR instead.

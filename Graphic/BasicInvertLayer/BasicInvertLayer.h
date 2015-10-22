@@ -8,7 +8,9 @@
 typedef struct	s_InvertLayer
 {
   Layer		*layer;
+  #ifdef PBL_PLATFORM_APLITE
   InverterLayer	*inv;
+  #endif
 }		InvertLayer;
 
 /**
